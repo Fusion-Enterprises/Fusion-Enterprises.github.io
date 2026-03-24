@@ -1,0 +1,2290 @@
+/* Reset some basic elements for a clean slate */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #0092c7;
+  --dark-bg: rgba(0, 0, 0, 0.6); 
+
+  --text-main: #ffffff;
+  --text-light: #d3d3d3;
+  --neon-accent: #0ef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  background-size: cover;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ===== Hide Main Scrollbar, Show on Hover ===== */
+
+/* --- Firefox --- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) rgba(0, 0, 0, 0.3);
+}
+html:hover {
+  scrollbar-color: var(--neon-accent) rgba(0, 0, 0, 0.6);
+}
+
+/* Custom Text Selection */
+::selection {
+  background: var(--neon-accent);
+  color: #000;
+}
+
+/* --- WebKit (Chrome, Safari, Edge) --- */
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+html:hover::-webkit-scrollbar-thumb {
+  background-color: var(--neon-accent);
+}
+
+body {
+  font-family: 'Rajdhani', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  line-height: 1.6;
+}
+.container {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+  font-size: large;
+  background: transparent; /* Optional: just to be safe */
+
+}
+header .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Reset margins */
+}
+/* Remove the body transform which can break fixed backgrounds on mobile */
+/* Add base styles for the menu icon (hidden on desktop) */
+/* Update the 768px media query to handle the mobile menu toggle */
+.logo-container img {
+  width: 200px; /* Adjust logo size */
+  height: auto;
+  margin: 0; /* Reset margins */
+}
+/* Header and Navigation */
+header {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: dynamic;
+  top: 0;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  z-index: 1000;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  font-size: 4.5rem;
+}
+nav{
+ background-color: #0091bd00;
+}
+nav a {
+  margin: 0 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #0091bd;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-container {
+        margin-bottom: 0;
+    }
+}
+
+/* Product Section */
+
+.product-section h2 {
+  font-size: 2.5rem;
+  font-size: 3.2rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+.product-card button {
+  background-color: #0091bd; /* Green background */
+  color: white;             /* White text */
+  font-size: 18px;          /* Bigger text */
+  padding: 10px 15px;       /* Bigger button */
+  border: none;             /* No border */
+  border-radius: 12px;      /* Rounded edges */
+  cursor: pointer;         /* Pointer cursor on hover */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover button {
+  opacity: 1;
+  pointer-events: auto;
+}
+.product-card button:hover {
+  background-color: #002f1d;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 1.8rem;
+  font-size: 2.2rem;
+  margin: 20px 0;
+}
+
+.product-card p {
+  font-size: 1rem;
+  color: #ffffff;
+}
+@media (max-width: 992px) {
+  .product-card {
+    flex: 0 0 calc(50% - 20px); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 0 0 100%; /* 1 per row on mobile */
+  }
+}
+
+/* About Section */
+.about-section {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  color: white;
+  padding: 50px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #ffffff;
+  color: var(--text-main);
+  font-weight: 300;
+}
+.contact-socials {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.contact-socials h4 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 50px 0;
+  background-color: var(--dark-bg);
+  color: white;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+}
+
+/* New Contact Layout */
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+/* Left Column: Info Card */
+.contact-info-card {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 40px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contact-info-card h3 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.info-intro {
+  margin-bottom: 30px;
+  color: #d3d3d3;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 146, 199, 0.5);
+}
+
+.info-text h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.info-text p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.response-note {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 146, 199, 0.1);
+  border-left: 3px solid var(--primary-color);
+  border-radius: 4px;
+}
+.response-note p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+.response-note i {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Right Column: Form Container */
+.contact-form-container {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-section form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align inputs to left */
+}
+
+/* Make inputs full width inside contact form */
+.contact-form-container .wave-group,
+.contact-form-container .input,
+.contact-form-container .bar {
+  width: 100%;
+}
+
+.contact-section form button {
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.contact-section form button:hover {
+  background-color: #002f1d;
+}
+
+/* Map Section */
+.map-section {
+  width: 100%;
+  line-height: 0; /* Removes gap below iframe */
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer */
+footer {
+ 
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  header .container {
+    justify-content: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card h3 {
+    font-size: 1.6rem;
+  }
+}
+/* Key Benefits Section */
+.benefits-section {
+  background-color: #f4f4f4;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.benefits-section h2 {
+  font-size: 2.5rem;
+  font-size: 3.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.benefits-grid {
+  display: flex;
+  gap: 20px;
+  justify-items: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* Make all cards match height */
+}
+
+.benefit-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  min-height: 400px; /* Force consistent height */
+}
+
+.benefit-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+  font-size: 1.6rem;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.benefit-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Partners Section */
+.partners-section {
+  background-color: #0091bd;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  padding: 30px 0;
+  text-align: center;
+  color: white;
+}
+
+.partners-section h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-size: 3.2rem;
+  margin-bottom: 30px;
+}
+
+.slider .item img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.2)
+          drop-shadow(0 0 10px rgba(0, 200, 255, 0.6));
+}
+
+/* Make .logo-container responsive */
+@media (max-width: 768px) {
+  .logo-container {
+    flex-direction: column;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .logo-container img {
+    margin: 0 auto 10px;
+    width: 60%;
+  }
+}
+
+/* Make .benefits-grid stack on smaller screens */
+@media (max-width: 768px) {
+  .benefits-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .benefit-card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+.benefits-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* Make all cards match height */
+}
+
+.benefit-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  min-height: 400px; /* Force consistent height */
+}
+.about-section,
+.benefits-section {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  color: white;
+  padding: 30px 0;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+
+.partners-section {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  padding: 50px 0;
+  text-align: center;
+  color: white;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  background-size: cover;
+}
+.product-section {
+  background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+.product-card {
+  background-color: white; /* Keep cards clean and readable */
+  color: black;
+}
+
+.container h2{
+  color: white;
+}
+.product-card {
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: none; /* Remove outline effect */
+  overflow: hidden;
+  text-align: center;
+  padding: 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  color: #ffffff;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+}
+.product-card:hover p {
+  transform: translateY(-5px);
+  background-color: transparent;
+  color: black;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.product-category-card {
+  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent white */
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.product-category-card:hover::before {
+  opacity: 1;
+}
+
+.product-category-card h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 15px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.product-category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 255, 0.08),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  max-height:250px;
+  max-height: 495px; /* Approx 3 items */
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+
+
+
+.product-category-card.active .dropdown-content {
+  max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 15px;
+  pointer-events: auto;
+}
+.product-item {
+  display: flex;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 15px;
+  color: white;
+  min-height: 100px;
+  min-height: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center; /* instead of flex-start */
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.product-item img {
+  width: 80px;                /* Slightly smaller for uniformity */
+  height: 80px;
+  object-fit: contain;        /* Maintain aspect ratio */
+  border-radius: 4px;
+  flex-shrink: 0;
+  background-color: transparent;    /* Optional: helps logos stand out */
+     /* Optional: buffer for logo clarity */
+}
+
+.product-category-card {
+  min-height: 550px; /* or adjust to your preferred consistent height */
+}
+
+.product-item p strong {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.contact-btn,
+.product-card button {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: white;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* hover = lift (industrial style) */
+.contact-btn:hover,
+.product-card button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.35);
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+/* click feedback */
+.contact-btn:active,
+.product-card button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.product-category-card h3,
+.product-item p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+  margin: 0;
+}
+
+.product-item p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  min-height: 150px; /* ⬅️ Add this line */
+}
+
+.product-item p strong {
+  display: block;
+}
+.dropdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Show scrollbar on hover */
+.dropdown-content:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent; /* For Firefox */
+}
+.dropdown-content:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+@media (max-width: 768px) {
+  .product-category-card {
+    min-height: auto; /* Let it shrink naturally on small screens */
+  }
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Force 3 cards per row */
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.product-card {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  word-wrap: break-word; /* make long words wrap instead of stretching */
+  overflow: hidden;      /* hides overflow if necessary */
+}
+
+.product-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-right: 20px;
+  transition: transform 0.3s ease;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.product-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
+}
+
+.product-info p {
+  font-size: 16px;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.product-card button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover button {
+  opacity: 1;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+/* 🌐 Responsive Adjustments */
+
+/* Medium devices (tablets) */
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logo-container {
+    flex-direction: column;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .logo-container img {
+    margin: 0 auto 10px;
+    width: 180px;
+  }
+
+  nav a {
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .product-card {
+    flex-direction: column;
+    width: 100%;
+    min-height: auto;
+    padding: 15px;
+  }
+
+  .product-card img {
+    margin: 0 0 10px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .product-info {
+    margin-bottom: 0;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .benefits-grid {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .product-card button {
+    position: static;
+    width: 100%;
+    margin-top: 15px;
+  }
+   .nav-dropdown:hover .dropdown-menu, .footer-nav .nav-dropdown:hover .dropdown-menu {
+    display: block;
+    transform: none;
+    display: none;
+  }
+  .product-card button {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .benefit-card {
+    width: 90%;
+    min-height: auto;
+  }
+
+  .partners-logos {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .partners-logos img {
+    max-height: 50px;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+  .logo-container img {
+    width: 140px;
+  }
+
+  .product-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+}
+/* Responsive About Page Card Layout */
+@media (max-width: 768px) {
+  .benefits-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center cards horizontally */
+  }
+
+  .benefit-card {
+    width: 90%; /* Shrinks to fit smaller screens */
+    max-width: 250px; /* Prevents being too big on medium screens */
+    text-align: center;
+  }
+
+  .benefit-card img {
+    max-width: 120px; /* Resize image proportionally */
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefit-card {
+    width: 95%; /* Fill more space on very small screens */
+    max-width:250px;
+  }
+
+  .benefit-card img {
+    max-width: 100px; /* Slightly smaller images */
+  }
+}
+
+body {
+    transform: scale(1);
+}
+nav a {
+    font-size: 19px     !important; /* match other pages */
+}
+header nav a {
+    font-size: 18px;
+    font-size: 1.3rem;
+}
+header nav a {
+    font-size: 1rem;
+    font-size: 1.3rem;
+}
+/* From Uiverse.io by AbanoubMagdy1 */ 
+.wave-group {
+  position: relative;
+  margin: 20px 0;
+}
+
+.wave-group .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  color: white;
+}
+
+.wave-group .input:focus {
+  outline: none;
+}
+
+.wave-group .label {
+  color: white;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  display: flex;
+}
+
+.wave-group .label-char {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * .05s);
+}
+
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: white;
+}
+
+.wave-group .bar {
+  position: relative;
+  display: block;
+  width: 200px;
+}
+
+.wave-group .bar:before,.wave-group .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--primary-color);
+
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.wave-group .bar:before {
+  left: 50%;
+}
+
+.wave-group .bar:after {
+  right: 50%;
+}
+
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+  width: 50%;
+}
+/* For Chrome, Edge, Opera */
+
+.wave-group textarea.input {
+  resize: none;
+}
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important; /* your text color */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* For Firefox */
+input:-moz-autofill {
+  background-color: transparent !important;
+  -moz-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -moz-text-fill-color: #fff !important;
+}
+
+nav a {
+    position: relative;
+    font-size: 1.1em;
+    font-size: 1.3em;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 20px;
+    transition: .5s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #0ef;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #0ef;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+nav a:hover::after {
+    transform: scaleX(1);
+}
+/* Active State for Navigation */
+nav a.active {
+    color: #0ef;
+}
+nav a.active::after {
+    transform: scaleX(1);
+}
+/* ======= Futuristic Glass Neon Dropdown — Fade + Slide + Glow ======= */
+
+/* ======= Modern Industrial Dropdown ======= */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+/* "Products" link */
+.nav-dropdown .has-dropdown {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Dropdown menu container */
+/* Arrow Indicator */
+.nav-dropdown .has-dropdown::after {
+  content: '▼';
+  font-size: 0.6em;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
+}
+
+.nav-dropdown:hover .has-dropdown::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 10px); /* slight offset for animation */
+  display: flex;
+  flex-direction: column;
+  min-width: 230px;
+  background: rgba(255, 255, 255, 0.6); /* more transparent glass */
+  backdrop-filter: blur(5px) brightness(1.1);
+  -webkit-backdrop-filter: blur(14px) brightness(1.1);
+  border: 1px solid rgba(0, 238, 255, 0.35);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 30px rgba(0, 238, 255, 0.05),
+    0 8px 25px rgba(0, 0, 0, 0.6);
+  transform-origin: top center;
+  z-index: 1000;
+
+  /* Hidden state */
+  transform: translateX(-50%) translateY(15px);
+  min-width: 220px;
+  background: rgba(61, 61, 61, 0.623); /* Dark industrial background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.4s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: block; /* Ensures transitions work */
+}
+
+/* When hovered — fade + slide up */
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  border-color: rgba(255, 255, 255, 0.575);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.664),
+    0 0 50px rgba(255, 255, 255, 0.25),
+    inset 0 0 35px rgba(0, 238, 255, 0.08);
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+  display: block;
+  padding: 12px 18px;
+  color: #fff;
+  padding: 12px 20px;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.95em;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  transition: all 0.3s ease, background 0.25s ease, color 0.25s ease;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+  text-align: left;
+  text-transform: none;
+}
+
+/* Inner glow light effect behind each item */
+.dropdown-menu a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+.dropdown-menu a {
+  font-size: 0.95rem;
+}
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+/* Hover: bright glow + slight shift */
+.dropdown-menu a:hover {
+  color: #00c3ff;
+  padding-left: 25px; /* Slide effect */
+}
+
+.dropdown-menu a:hover::before {
+  opacity: 1;
+}
+/* Footer specific: Open Upwards */
+.footer-nav-v2 .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  transform: translateX(-50%) translateY(-15px);
+  margin-bottom: 10px;
+}
+
+/* Remove bottom border from last link */
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+.footer-nav-v2 .nav-dropdown:hover .dropdown-menu {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    display: none; /* Hidden by default on mobile, toggled via JS or hover */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    border: none;
+    min-width: 100%;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  /* On mobile, disable the desktop hover effect. Clicks are handled by JS. */
+  .nav-dropdown:hover .dropdown-menu, .footer-nav .nav-dropdown:hover .dropdown-menu {
+    display: none;
+  }
+  
+  .dropdown-menu a {
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding-left: 0;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .dropdown-menu a:hover {
+    padding-left: 0;
+  }
+}
+
+.slider{
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 10% 90%,
+        transparent
+    );
+}
+.slider .list{
+    display: flex;
+    width: 100%;
+    min-width: calc(var(--width) * var(--quantity));
+    position: relative;
+}
+.slider .list .item{
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    left: 100%;
+    animation: autoRun 15s linear infinite;
+    transition: filter 0.5s;
+    animation-delay: calc( (15s / var(--quantity)) * (var(--position) - 1) - 10s)!important;
+}
+.slider .list .item img{
+    width: 100%;
+}
+@keyframes autoRun{
+    from{
+        left: 100%;
+    }to{
+        left: calc(var(--width) * -1);
+    }
+}
+
+
+.slider .item:hover{
+    filter: grayscale(0);
+}
+.slider[reverse="true"] .item{
+    animation: reversePlay 15s linear infinite;
+    animation: reversePlay 25s linear infinite;
+}
+@keyframes reversePlay{
+    from{
+        left: calc(var(--width) * -1);
+    }to{
+        left: 100%;
+    }
+}
+.sh{
+  font-size: 50px;
+}
+/* Increase space above the heading */
+.sh {
+  margin-top: 0;
+  margin-bottom: 40px; /* adds space below heading before slider */
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+/* Add extra space between heading and slider */
+.slider {
+  margin-top: 40px;
+}
+/* Make all logos in the slider uniform and centered */
+.slider .list .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* remove any unwanted background */
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  left: 100%;
+  animation: autoRun 25s linear infinite;
+  transition: filter 0.5s;
+  animation-delay: calc((25s / var(--quantity)) * (var(--position) - 1) - 25s) !important;
+}
+
+/* Standardize logo size inside the slider */
+.slider .list .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keeps logos proportional */
+  padding: 10px; /* gives breathing space */
+  filter: brightness(1) contrast(1.1);
+}
+.slider[reverse="true"] .item {
+  animation: reversePlay 25s linear infinite;
+}
+.partners-logos img,
+.slider .item img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.9);
+}
+
+.partners-logos img:hover,
+.slider .item img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.2)
+          drop-shadow(0 0 10px rgba(0, 200, 255, 0.6));
+}
+.product-category-card {
+  background-color: rgba(131, 131, 131, 0.205); /* solid dark overlay */
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-category-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 255, 0.08),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-category-card:hover::before {
+  opacity: 1;
+}
+
+.product-category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+.contact-btn {
+  position: relative;
+  overflow: hidden;
+}
+.product-item {
+  background: rgba(107, 107, 107, 0.185);
+}
+.contact-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.4s ease;
+}
+
+.contact-btn:hover::after {
+  left: 100%;
+}
+
+.contact-btn:hover {
+  background-color: #003f2a;
+}
+@media (max-width: 480px) {
+  .product-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .contact-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Update these in your style.css */
+:root {
+  --primary-color: #0092c7;
+  --dark-bg: rgba(0, 0, 0, 0.6); 
+
+  --text-main: #ffffff;
+  --text-light: #d3d3d3;
+}
+
+/* 2. Button Refinement */
+.contact-btn,
+.product-card button {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: white;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+/* hover = lift (industrial style) */
+.contact-btn:hover,
+.product-card button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.35);
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+/* click feedback */
+.contact-btn:active,
+.product-card button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* 3. Text Contrast Fixes */
+
+
+.about-section p {
+  color: var(--text-main); /* Ensure readability on light backgrounds */
+}
+/* --- Additional Mobile Responsiveness --- */
+
+/* Ensure the footer dropdown displays correctly */
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-nav .nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  bottom: 100%; /* Opens upward in the footer */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  min-width: 180px;
+  z-index: 100;
+  border-radius: 8px;
+  padding: 10px 0;
+}
+
+.footer-nav .nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Mobile Fixes for Grid Layouts */
+@media (max-width: 768px) {
+  /* Stack the Hero and About sections */
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
+  .about-section p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  /* Ensure product grids stack on one column */
+  .product-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+
+  /* Fix Partner Logos for mobile */
+  .partners-logos {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  
+  /* Make all Benefit Cards full width */
+  .benefit-card {
+    width: 90%;
+    min-height: auto;
+  }
+}
+
+/* Fix for overlapping elements on very small screens */
+@media (max-width: 480px) {
+  .logo-container img {
+    width: 180px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+}
+/* Fix for very small screens */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .logo-container img {
+    width: 180px;
+  }
+}
+/* subtle industrial highlight */
+.auto-filled {
+  animation: pulseFill 1.2s ease-out;
+  border-color: #007BFF;
+  background-color: rgba(0, 123, 255, 0.08);
+}
+
+@keyframes pulseFill {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+/* ===============================
+   NEW FOOTER (OVERRIDES OLD)
+================================ */
+.footer-v2 {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 999;
+}
+
+.footer-v2-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* BRAND */
+.footer-brand {
+  text-align: center;
+  max-width: 500px;
+  text-align: left;
+  max-width: 300px;
+}
+
+.footer-brand img {
+  max-width: 240px;
+  margin-bottom: -20px;
+  align-items: center;
+}
+
+.footer-brand h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #0ef;
+}
+
+.footer-brand p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #ccc;
+  text-align: center;
+  text-align: left;
+}
+
+/* SOCIAL */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-links h4, .footer-contact h4, .footer-social h4 {
+  color: #0ef;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #0ef;
+  padding-left: 5px;
+}
+
+.footer-links .nav-dropdown .has-dropdown::after {
+  display: none;
+}
+
+.footer-contact p {
+  color: #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 22px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin-left: -10px;
+}
+
+.footer-social a:hover {
+  background: #0ef;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 15px rgba(0,238,255,0.6);
+}
+
+/* Make copyright span full width in grid */
+.footer-v2-inner .footer-bottom {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .footer-v2-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+  
+  .footer-brand p, .footer-social, .footer-links, .footer-contact {
+    text-align: center;
+    align-items: center;
+  }
+
+}
+/* Stateful Contact Button */
+.stateful-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  padding: 1em 2em;
+  border: none;
+  border-radius: .6rem;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  min-width: 180px;
+  min-height: 50px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stateful-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.35);
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+.stateful-button .button-text {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.stateful-button .button-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  margin-left: -12px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Stay Signed In Checkbox */
+.stay-signed-in-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 200px; /* Match form input width */
+  margin: 10px 0;
+  color: white;
+}
+
+.stay-signed-in-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.stay-signed-in-container label {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide-in Animation */
+.slide-in {
+  opacity: 0;
+  transform: translateX(-50px); /* Start off-screen to the left */
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.slide-in.visible {
+  opacity: 1;
+  transform: translateX(0); /* Slide into view */
+}
+
+
+
+/* --- NEW ANIMATIONS --- */
+
+/* 1. Staggered Reveal Effect */
+/* This adds a slight delay to each subsequent card in a grid, creating a cascading entrance */
+.product-grid .reveal:nth-child(1), .benefits-grid .reveal:nth-child(1) { transition-delay: 0.1s; }
+.product-grid .reveal:nth-child(2), .benefits-grid .reveal:nth-child(2) { transition-delay: 0.2s; }
+.product-grid .reveal:nth-child(3), .benefits-grid .reveal:nth-child(3) { transition-delay: 0.3s; }
+.product-grid .reveal:nth-child(4), .benefits-grid .reveal:nth-child(4) { transition-delay: 0.4s; }
+.product-grid .reveal:nth-child(5), .benefits-grid .reveal:nth-child(5) { transition-delay: 0.5s; }
+.product-grid .reveal:nth-child(6), .benefits-grid .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+/* 2. Glitch Text Effect on Hover */
+/* Adds a futuristic 'shake' and color split to headings when hovered */
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+h1:hover, .sh:hover {
+  animation: glitch-skew 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #0ef; /* Neon Cyan highlight */
+  text-shadow: 2px 2px #ff0055, -2px -2px #00ccff;
+  cursor: default;
+}
+
+/* 3. Subtle Floating Animation for List Icons */
+@keyframes floatImg {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.product-item img {
+  animation: floatImg 4s ease-in-out infinite;
+}
+
+/* 4. Page Fade In Animation */
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  animation: fadeInPage 0.5s ease-out;
+}
+
+/* ===============================
+   MEGA MENU STYLES
+================================ */
+.dropdown-menu.mega-menu {
+    width: max-content;
+    padding: 20px;
+    left: 10%;
+    transform: translateX(-50%) translateY(15px);
+    border-radius: 15px;
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 238, 255, 0.2);
+}
+
+.mega-menu-content {
+    display: flex;
+    gap: 20px;
+}
+
+.mega-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border-bottom: none !important;
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    height: 100%;
+    justify-content: space-between;
+    width: 180px;
+    border: 1px solid transparent;
+}
+
+.mega-item:hover {
+    background: rgba(0, 238, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(0, 238, 255, 0.4);
+}
+
+.mega-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: brightness(0.9);
+    transition: 0.3s;
+}
+
+.mega-item:hover img {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+
+.mega-text p {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Mobile Responsive Mega Menu */
+@media (max-width: 768px) {
+    .dropdown-menu.mega-menu {
+        min-width: 100%;
+        position: static;
+        transform: none;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    .mega-menu-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mega-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 15px;
+        align-items: center;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .mega-item img {
+        margin-bottom: 0;
+        margin-right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .mega-item:hover {
+        padding-left: 15px;
+        transform: none;
+        background: rgba(0, 238, 255, 0.1);
+    }
+}
+
+/* ===============================
+   NEW UI ELEMENTS (ADDED)
+================================ */
+
+/* 1. Scroll Progress Bar */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 10001;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--neon-accent);
+  width: 0%;
+  box-shadow: 0 0 10px var(--neon-accent);
+  transition: width 0.1s ease-out;
+}
+
+/* 2. Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  color: var(--neon-accent);
+  border: 1px solid var(--neon-accent);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.2);
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--neon-accent);
+  color: #000;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--neon-accent);
+}
+
+/* 3. Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* Or a very dark grey to match theme */
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Re-use existing spinner animation or create a simple one */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  border-top-color: var(--neon-accent);
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Hide preloader when body has 'loaded' class */
+body.loaded #preloader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
