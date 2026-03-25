@@ -129,3 +129,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearElements = document.querySelectorAll(".copyright-year");
   yearElements.forEach(el => el.textContent = new Date().getFullYear());
 });
+// === PERSISTENT SCROLL REVEAL OBSERVER ===
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      // REMOVE class when leaving viewport to allow infinite re-animation
+      entry.target.classList.remove('show');
+    }
+  });
+}, { 
+  threshold: 0.1, 
+  rootMargin: '0px 0px -50px 0px' 
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Target individual cards for staggered Left-to-Right animation
+  const cards = document.querySelectorAll('.benefit-card, .product-card, .contact-info-card');
+  cards.forEach((card, index) => {
+    card.classList.add('card-reveal');
+    // Add staggered delay based on position (0.2s, 0.4s, 0.6s)
+    card.style.transitionDelay = `${(index % 3) * 0.2}s`;
+    revealObserver.observe(card);
+  });
+
+  // 2. Target general content (titles, text) inside sections (keeping overlays static)
+  const contentItems = document.querySelectorAll(
+    '.about-section > *:not(.benefits-grid), .benefits-section > h2, .contact-form-container, .partners-section > *'
+  );
+  
+  contentItems.forEach(item => {
+    item.classList.add('scroll-reveal');
+    revealObserver.observe(item);
+  });
+});

@@ -2090,3 +2090,110 @@ body.loaded #preloader {
     opacity: 0;
     visibility: hidden;
 }
+/* Scroll Reveal Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Fix for Mega Menu closing too early */
+.nav-dropdown {
+  padding-bottom: 15px; /* Creates a hidden bridge between the link and the menu */
+  margin-bottom: -15px; /* Offsets the padding so it doesn't push other elements */
+}
+
+.dropdown-menu {
+  margin-top: 0; /* Ensures the menu sits directly against the "bridge" */
+}
+
+/* Optional: Smooth fade-in to prevent flickering */
+.dropdown-menu {
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+/* Fix for Mega Menu Z-Index (ensures it stays on top of overlays) */
+header {
+  z-index: 1000 !important; /* Ensures the whole header is high up */
+  position: relative;
+}
+
+.nav-dropdown {
+  position: relative;
+  z-index: 1001 !important;
+}
+
+.dropdown-menu, 
+.mega-menu {
+  z-index: 9999 !important; /* Higher than any other page element */
+  position: absolute;
+  /* Ensures no clipping from parent containers */
+  display: block; 
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Ensure the dropdown becomes visible on hover */
+.nav-dropdown:hover > .dropdown-menu,
+.nav-dropdown:hover > .mega-menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Fix for preloader/overlay blocking the menu */
+#page-loader, #preloader {
+  z-index: 10000; /* Preloader stays on top until it fades out */
+}
+/* --- FIX FOR EMPTY SPACE AT BOTTOM --- */
+html, body {
+  min-height: 100%; /* Changed from height: 100% to allow expansion */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the background stays fixed and doesn't cut off */
+body {
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Specific Footer Fix for the copyright gap */
+footer {
+  margin-top: auto; /* Pushes footer to absolute bottom on short pages */
+  padding: 40px 0 0 0; /* Adjust padding to remove bottom gap */
+  width: 100%;
+}
+
+.footer-bottom {
+  margin-bottom: 0 !important;
+  padding: 20px 0;
+}
+
+/* --- SCROLL REVEAL ANIMATIONS --- */
+/* Base for general elements (Text, titles) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+  visibility: hidden; 
+}
+
+/* Base for Cards (Slide in from left as requested) */
+.card-reveal {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease-out;
+  visibility: hidden;
+}
+
+.scroll-reveal.show, .card-reveal.show {
+  opacity: 1;
+  transform: translate(0, 0);
+  visibility: visible;
+}
