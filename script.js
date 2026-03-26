@@ -19,60 +19,44 @@ window.addEventListener("DOMContentLoaded", function () {
     while (uiContainer.firstChild) {
         document.body.appendChild(uiContainer.firstChild);
     }
+// === WHATSAPP FORM LOGIC ===
+const form = document.getElementById("whatsapp-form");
+if (form) {
+  // 1. Get the product name from the URL (?product=Name)
+  const urlParams = new URLSearchParams(window.location.search);
+  const product = urlParams.get('product');
 
-    // === WHATSAPP FORM LOGIC ===
-    const form = document.getElementById("whatsapp-form");
-    if (form) {
-      const nameInput = document.getElementById("name");
-      const emailInput = document.getElementById("email");
-      const messageInput = document.getElementById("message");
-      const staySignedInCheckbox = document.getElementById("stay-signed-in");
+  // Handle Form Submission
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
 
-      // Autofill details if "Stay signed in" was checked previously
-      if (localStorage.getItem("userName")) {
-        nameInput.value = localStorage.getItem("userName");
-      }
-      if (localStorage.getItem("userEmail")) {
-        emailInput.value = localStorage.getItem("userEmail");
-      }
+    // Autofill inquiry text from URL or localStorage
+    const selectedProduct = product || localStorage.getItem("selectedProduct");
 
-      // Pre-fill message if user clicked a specific product
-      const cameFromProducts = document.referrer.toLowerCase().includes("product");
-      if (!cameFromProducts) {
-        localStorage.removeItem("selectedProduct");
-      }
-      const product = localStorage.getItem("selectedProduct");
-      if (product && messageInput) {
-        messageInput.value = `I would Like to enquire about the price and availability of "${product}"`;
-      }
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const submitBtn = form.querySelector('.stateful-button');
-        
-        if (submitBtn && (submitBtn.classList.contains('loading') || submitBtn.classList.contains('sent'))) return;
-
-        if (submitBtn) submitBtn.classList.add('loading');
-
-        const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
-        const userMessage = messageInput ? messageInput.value.trim() : "";
-
-        if (staySignedInCheckbox && staySignedInCheckbox.checked) {
-          localStorage.setItem("userName", name);
-          localStorage.setItem("userEmail", email);
-        } else {
-          localStorage.removeItem("userName");
-          localStorage.removeItem("userEmail");
-        }
-
-        let message = `Name: ${name}\nEmail: ${email}`;
-        if (userMessage) message += `\n\n${userMessage}`;
-
-        const whatsappURL = `https://wa.me/923348033319?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, "_blank");
-      });
+    // Construct the WhatsApp message
+    let message = `Name: ${name}\nEmail: ${email}`;
+    if (selectedProduct) {
+      message += `\n\nI would like to inquire about ${selectedProduct}`;
+      localStorage.removeItem("selectedProduct");
     }
+
+    const whatsappURL = `https://wa.me/923348033319?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+  });
+}
+// Function to handle "Contact Seller" clicks
+function contactSeller(productName) {
+  // Encodes the product name to be safe for a URL
+  const encodedProduct = encodeURIComponent(productName);
+  // Redirects directly to contact.html with a query parameter
+  window.location.href = `contact.html?product=${encodedProduct}`;
+}
+
 
     // === ACTIVE NAV LINK HIGHLIGHTER ===
     const navLinks = document.querySelectorAll('nav a');
