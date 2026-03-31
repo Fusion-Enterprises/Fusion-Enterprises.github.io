@@ -2217,48 +2217,67 @@ footer {
     margin: 5px 0;
   }
 }
-/* --- Mobile Header Row Fix --- */
+/* Hide mobile toggle elements on Desktop */
+#check, .menu-label {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    /* Stack elements vertically but keep content centered */
     header .container {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        padding: 0px 0;
     }
 
-    /* Logo and Title stay side-by-side in one line */
     .logo-container {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: center !important;
         width: 100%;
+        gap: 10px;
     }
 
-    header h1 {
-        font-size: 35px !important;
-        margin: 0 !important;
-    }
-
-    /* Hamburger appears centered underneath the logo/title line */
-    #menu-icon {
+    /* Show the clickable label and center it under the logo */
+    .menu-label {
         display: block !important;
-        margin: 0 auto !important;
-        font-size: 2.2rem;
+        margin-top: 10px;
         cursor: pointer;
     }
 
-    /* Keep the hidden menu centered when it drops down */
-    .navbar {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.9);
+    #menu-icon {
+        display: block !important;
+        font-size: 2.8rem;
+        transition: transform 0.4s ease; /* Animation timing */
     }
 
-    .navbar.active {
+    /* --- THE CROSS ANIMATION --- */
+    #check:checked ~ .menu-label #menu-icon {
+        transform: rotate(90deg);
+        color: var(--neon-accent);
+    }
+
+    /* Swaps hamburger icon to 'X' icon using Boxicons code */
+    #check:checked ~ .menu-label #menu-icon::before {
+        content: "\ea6a"; 
+    }
+
+    /* --- THE MENU TOGGLE --- */
+    .navbar {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        text-align: center;
+    }
+
+    #check:checked ~ .navbar {
         display: flex !important;
+    }
+
+    /* Safeguard for the Mega Menu */
+    .nav-dropdown .dropdown-menu {
+        position: static !important;
+        display: none;
     }
 }
