@@ -148,3 +148,20 @@ document.addEventListener("DOMContentLoaded", () => {
     revealObserver.observe(item);
   });
 });
+
+
+
+
+// Mobile Menu Toggle Logic
+document.addEventListener("DOMContentLoaded", () => {
+    const menuIcon = document.querySelector('#menu-icon');
+    const navbar = document.querySelector('.navbar');
+
+    if (menuIcon && navbar) {
+        menuIcon.onclick = () => {
+            navbar.classList.toggle('active');
+            // Optional: Change icon to an 'X' if using boxicons
+            menuIcon.classList.toggle('bx-x');
+        };
+    }
+});
