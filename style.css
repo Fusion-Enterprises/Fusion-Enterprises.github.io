@@ -2197,3 +2197,23 @@ footer {
   transform: translate(0, 0);
   visibility: visible;
 }
+@media (max-width: 768px) {
+  .footer-links .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-links .dropdown-menu {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .footer-links .dropdown-menu a {
+    margin: 5px 0;
+  }
+}
