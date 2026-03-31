@@ -2217,3 +2217,49 @@ footer {
     margin: 5px 0;
   }
 }
+/* --- Mobile Header Row Fix --- */
+@media (max-width: 768px) {
+    /* Stack elements vertically but keep content centered */
+    header .container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    /* Logo and Title stay side-by-side in one line */
+    .logo-container {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 35px !important;
+        margin: 0 !important;
+    }
+
+    /* Hamburger appears centered underneath the logo/title line */
+    #menu-icon {
+        display: block !important;
+        margin: 0 auto !important;
+        font-size: 2.2rem;
+        cursor: pointer;
+    }
+
+    /* Keep the hidden menu centered when it drops down */
+    .navbar {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar.active {
+        display: flex !important;
+    }
+}
