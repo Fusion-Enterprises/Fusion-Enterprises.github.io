@@ -3217,3 +3217,34 @@ header.sticky-header.scrolled {
         border-bottom: none; /* Clean finish at the bottom */
     }
 }
+@media (max-width: 768px) {
+    /* Add space at the very top so text doesn't hide behind the navbar */
+    .hero-section {
+        padding-top: 120px !important; /* Adjust this number based on your header height */
+    }
+}
+@media (max-width: 768px) {
+    /* Allow the stats section to be as tall as the content */
+    .hero-stats {
+        height: auto !important; 
+        min-height: unset !important;
+        padding: 40px 0 !important;
+        margin-top: 20px;
+    }
+
+    /* Remove the 'overflow: hidden' that is likely cutting off your rounded corners */
+    .hero-glass-card {
+        height: auto !important;
+        overflow: visible !important; 
+        margin: 0 15px;
+        border-radius: 30px; /* Ensure corners stay rounded */
+    }
+
+    /* Stack the items so they don't squash and disappear */
+    .hero-stats-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+}
