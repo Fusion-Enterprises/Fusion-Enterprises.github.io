@@ -3172,22 +3172,37 @@ header.sticky-header.scrolled {
   box-shadow: 0 6px 30px rgba(0, 146, 199, 0.6);
 }
 /* MOBILE FIXES */
+@/* MOBILE FIXES */
 @media (max-width: 768px) {
-    /* Ensure the container can grow with its content */
-    .hero-glass-card {
-        height: auto !important; 
-        min-height: min-content;
-        padding-bottom: 40px; /* Gives room for the rounded bottom */
-        overflow: visible !important; /* Prevents the "straight line" cut */
-        margin: 10px; /* Prevents edges from touching screen sides */
-        border-radius: 20px; /* Re-enforce rounded corners */
+    /* 1. Allow the section to grow with the content */
+    .hero-stats {
+        height: auto !important; /* This removes the 250px limit */
+        padding: 40px 0; /* Adds some breathing room top and bottom */
     }
 
-    /* Ensure the grid items stack properly instead of shrinking */
+    /* 2. Fix the glass card clipping */
+    .hero-glass-card {
+        height: auto !important;
+        padding: 2rem 1.5rem;
+        margin: 0 15px; /* Keeps it from hitting the screen edges */
+        overflow: visible; /* Ensures rounded corners aren't clipped */
+    }
+
+    /* 3. Stack the stats vertically */
     .hero-stats-grid {
-        display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px; /* Space between the items */
+    }
+
+    /* 4. Optional: Remove the side borders from desktop view */
+    .stat-box {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 20px;
+    }
+
+    .stat-box:last-child {
+        border-bottom: none;
     }
 }
 @media (max-width: 768px) {
