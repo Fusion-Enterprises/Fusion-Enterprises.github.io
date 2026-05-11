@@ -3171,3 +3171,34 @@ header.sticky-header.scrolled {
   transform: translateY(-3px);
   box-shadow: 0 6px 30px rgba(0, 146, 199, 0.6);
 }
+/* MOBILE FIXES */
+@media (max-width: 768px) {
+    /* Ensure the container can grow with its content */
+    .hero-glass-card {
+        height: auto !important; 
+        min-height: min-content;
+        padding-bottom: 40px; /* Gives room for the rounded bottom */
+        overflow: visible !important; /* Prevents the "straight line" cut */
+        margin: 10px; /* Prevents edges from touching screen sides */
+        border-radius: 20px; /* Re-enforce rounded corners */
+    }
+
+    /* Ensure the grid items stack properly instead of shrinking */
+    .hero-stats-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .stat-box {
+        width: 100%; /* Make boxes full width so they don't squish */
+        border-right: none; /* Remove side borders if you have them */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Add bottom separators instead */
+        padding: 20px 0;
+    }
+    
+    .stat-box:last-child {
+        border-bottom: none; /* Clean finish at the bottom */
+    }
+}
