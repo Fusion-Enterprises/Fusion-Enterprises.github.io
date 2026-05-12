@@ -3337,7 +3337,7 @@ header.sticky-header.scrolled {
 /* ===================================================
    MOBILE HEADER FIX — Single row: [Logo+Name] [☰]
    =================================================== */
-@media (max-width: 768px) {
+@media (max-width: 408px) {
 
   /* 1. Switch the container from column → row */
   header .container {
