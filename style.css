@@ -131,7 +131,7 @@ nav a {
 }
 
 /* Responsive Navbar */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     header .container {
         flex-direction: column;
         justify-content: center;
@@ -378,7 +378,7 @@ nav a {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .container {
     width: 90%;
   }
@@ -483,7 +483,7 @@ nav a {
 }
 
 /* Make .logo-container responsive */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .logo-container {
     flex-direction: column;
     margin-right: 0;
@@ -497,7 +497,7 @@ nav a {
 }
 
 /* Make .benefits-grid stack on smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .benefits-grid {
     flex-direction: column;
     align-items: center;
@@ -671,12 +671,12 @@ nav a {
 
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 400px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .product-grid {
     grid-template-columns: 1fr;
   }
@@ -763,7 +763,7 @@ nav a {
 .dropdown-content:hover::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.4);
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .product-category-card {
     min-height: auto; /* Let it shrink naturally on small screens */
   }
@@ -847,7 +847,7 @@ nav a {
 /* 🌐 Responsive Adjustments */
 
 /* Medium devices (tablets) */
-@media (max-width: 992px) {
+@media (max-width: 400px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -870,7 +870,7 @@ nav a {
 }
 
 /* Small devices (phones) */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   header h1 {
     font-size: 1.8rem;
   }
@@ -977,7 +977,7 @@ nav a {
   }
 }
 /* Responsive About Page Card Layout */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .benefits-grid {
     display: flex;
     flex-direction: column;
@@ -1266,7 +1266,7 @@ nav a.active::after {
 }
 
 /* Mobile Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .nav-dropdown {
     width: 100%;
     text-align: center;
@@ -1476,7 +1476,7 @@ nav a.active::after {
 }
 
 /* Fix for overlapping elements on very small screens */
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .logo-container img {
     width: 180px;
   }
@@ -1542,7 +1542,7 @@ nav a.active::after {
   
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .footer-v2-inner {
     flex-direction: column; /* Stacks items vertically */
     text-align: center;
@@ -1625,7 +1625,7 @@ nav a.active::after {
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .footer-v2-inner {
     flex-direction: column;
     text-align: center;
@@ -1801,7 +1801,7 @@ nav a.active::after {
 }
 
 /* Mobile Responsive Mega Menu */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .dropdown-menu.mega-menu {
         width: 100%;
         min-width: auto;
@@ -2007,7 +2007,7 @@ body.loaded #preloader {
 }
 
 /* Fix for Small Screens (Mobile) */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .dropdown-menu.mega-menu {
     position: static; /* Stack naturally in mobile menu */
     transform: none;
@@ -2032,7 +2032,7 @@ body.loaded #preloader {
   }
 }
 /* Update the existing mobile media query */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .navbar {
         display: flex;
         flex-direction: column;
@@ -2055,7 +2055,7 @@ body.loaded #preloader {
 }
 /* Footer Dropdown Alignment Fix */
 /* Footer Dropdown Alignment Fix */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .footer-links ul {
     display: flex;
     flex-direction: column;
@@ -2230,7 +2230,7 @@ footer {
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     header .container {
         display: flex !important;
         flex-direction: column !important;
@@ -2290,7 +2290,7 @@ footer {
     }
 }
 /* --- Footer Products Alignment Fix (Mobile & Tablet) --- */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* Target the dropdown specifically inside the footer */
     .footer-links .nav-dropdown {
         display: flex !important;
@@ -2341,7 +2341,7 @@ footer {
     }
 }
 /* --- Footer Dropdown Visibility Fix (Small Screens) --- */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* Target only the dropdowns inside the footer */
     footer .nav-dropdown .dropdown-menu {
         display: none !important; /* Hide it by default */
@@ -2396,7 +2396,7 @@ footer {
     align-items: center;           /* Centers internal content like logos/icons */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .footer-v2-inner {
         flex-direction: column;    /* Stacks items vertically on mobile */
         gap: 35px;
@@ -2756,7 +2756,7 @@ header.sticky-header.scrolled {
   gap: 16px;
   flex-wrap: wrap;
 }
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .cta-banner-inner {
     flex-direction: column;
     text-align: center;
@@ -2813,7 +2813,7 @@ header.sticky-header.scrolled {
 }
 
 /* Mobile hero adjustments */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .hero-section {
     padding: 60px 16px 140px;
     min-height: 100svh;
@@ -2891,7 +2891,7 @@ header.sticky-header.scrolled {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 /* Final Mobile Footer Fix */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .footer-v2 {
     padding: 40px 0 !important;
   }
@@ -2945,7 +2945,7 @@ header.sticky-header.scrolled {
    MOBILE FIXES: Header, Cut-offs, & Button Alignment
 =================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* 1. Remove sticky header in mobile view */
     header.sticky-header, 
     header.sticky-header.scrolled {
@@ -2998,7 +2998,7 @@ header.sticky-header.scrolled {
     }
 }
 /* Update your existing mobile media query */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   
   /* 1. Move logo and h1 to the left by changing alignment */
   header .container {
@@ -3115,7 +3115,7 @@ header.sticky-header.scrolled {
 }
 
 /* MOBILE FIXES */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .sub-page-hero { min-height: 30vh; padding-top: 140px; }
     .hero-glass-card { padding: 1.5rem; }
     .stat-box h2 { font-size: 2.2rem; }
@@ -3173,7 +3173,7 @@ header.sticky-header.scrolled {
 }
 /* MOBILE FIXES */
 /* MOBILE FIXES */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* 1. Allow the section to grow with the content */
     .hero-stats {
         height: auto !important; /* This removes the 250px limit */
@@ -3205,7 +3205,7 @@ header.sticky-header.scrolled {
         border-bottom: none;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .stat-box {
         width: 100%; /* Make boxes full width so they don't squish */
         border-right: none; /* Remove side borders if you have them */
@@ -3217,13 +3217,13 @@ header.sticky-header.scrolled {
         border-bottom: none; /* Clean finish at the bottom */
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* Add space at the very top so text doesn't hide behind the navbar */
     .hero-section {
         padding-top: 120px !important; /* Adjust this number based on your header height */
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* 1. Force the hero section down further */
     .hero-section {
         padding-top: 180px !important; /* Increased for real mobile headers */
@@ -3240,7 +3240,7 @@ header.sticky-header.scrolled {
         width: 120px !important;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     /* Kill the fixed height that causes the 'cutoff' line */
     .hero-stats {
         height: auto !important; 
