@@ -3261,7 +3261,7 @@ header.sticky-header.scrolled {
     .hero-stats-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 30px !important;
+        gap: 0px !important;
         height: auto !important;
     }
 }
