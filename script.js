@@ -13,7 +13,13 @@ window.addEventListener("DOMContentLoaded", function () {
     uiContainer.innerHTML = `
         <div id="preloader"><div class="loader"></div></div>
         <div class="scroll-progress-container"><div class="scroll-progress-bar"></div></div>
-        <div class="back-to-top" title="Back to Top">&#8679;</div>
+        <div class="back-to-top" title="Back to Top">
+          <svg class="btt-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <circle class="btt-ring-bg" cx="22" cy="22" r="18"/>
+            <circle class="btt-ring-fill" cx="22" cy="22" r="18"/>
+          </svg>
+          <i class='bx bx-chevron-up btt-icon'></i>
+        </div>
     `;
     
     while (uiContainer.firstChild) {
@@ -79,21 +85,33 @@ function contactSeller(productName) {
 });
 
 // === SCROLL EVENTS ===
+const BTT_RADIUS = 18;
+const BTT_CIRCUMFERENCE = 2 * Math.PI * BTT_RADIUS; // ≈ 113.1
+
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+
+  // Top progress bar
   const progressBar = document.querySelector('.scroll-progress-bar');
   if (progressBar) progressBar.style.width = scrolled + "%";
 
+  // Back-to-top visibility
   const backToTop = document.querySelector('.back-to-top');
   if (backToTop) backToTop.classList.toggle('active', winScroll > 300);
+
+  // Progress ring fill
+  const ringFill = document.querySelector('.btt-ring-fill');
+  if (ringFill) {
+    const offset = BTT_CIRCUMFERENCE - (scrolled / 100) * BTT_CIRCUMFERENCE;
+    ringFill.style.strokeDashoffset = offset;
+  }
 });
 
 // === BACK TO TOP CLICK ===
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('back-to-top')) {
+  if (e.target.closest('.back-to-top')) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
