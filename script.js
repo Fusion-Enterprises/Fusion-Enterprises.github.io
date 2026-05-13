@@ -254,9 +254,50 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ── Mobile: tap "Products" to toggle mega menu ──
+(function initMobileMegaMenu() {
+  function isMobile() { return window.innerWidth <= 768; }
 
+  document.addEventListener('click', (e) => {
+    if (!isMobile()) return;
 
+    const hasDropdown = e.target.closest('.has-dropdown');
+    if (hasDropdown) {
+      e.preventDefault();
+      e.stopPropagation();
+      const navDropdown = hasDropdown.closest('.nav-dropdown');
+      // Toggle .open — CSS patch handles visibility
+      navDropdown.classList.toggle('open');
+      return;
+    }
 
+    // Tapping a mega-item: close the whole mobile menu
+    const megaItem = e.target.closest('.mega-item');
+    if (megaItem) {
+      // Uncheck the hamburger checkbox to close the navbar
+      const checkbox = document.getElementById('check');
+      if (checkbox) checkbox.checked = false;
+      // Also collapse the dropdown
+      document.querySelectorAll('.nav-dropdown.open')
+        .forEach(d => d.classList.remove('open'));
+      return;
+    }
 
+    // Tapping outside the navbar: close the mega menu (not the full nav)
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open')
+        .forEach(d => d.classList.remove('open'));
+    }
+  });
 
-
+  // Close mega menu when hamburger is closed
+  const checkbox = document.getElementById('check');
+  if (checkbox) {
+    checkbox.addEventListener('change', () => {
+      if (!checkbox.checked) {
+        document.querySelectorAll('.nav-dropdown.open')
+          .forEach(d => d.classList.remove('open'));
+      }
+    });
+  }
+})();
